@@ -86,8 +86,10 @@ struct ScanValueView: View {
                 Text("\(count) running")
                     .foregroundStyle(.orange)
             case .empty:
-                Text("Clean")
+                // A word here ("Clean") read like the Clean button; a quiet tick doesn't.
+                Image(systemName: "checkmark")
                     .foregroundStyle(.secondary)
+                    .help("Nothing to clean")
             case let .unavailable(reason):
                 Image(systemName: "lock.fill")
                     .foregroundStyle(.secondary)

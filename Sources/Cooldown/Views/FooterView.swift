@@ -81,9 +81,15 @@ struct FooterView: View {
     }
 
     private func reportLine(_ report: CleanReport) -> some View {
-        var parts = ["Freed \(ByteFormat.string(report.freedBytes))"]
+        var parts: [String] = []
+        if report.freedBytes > 0 {
+            parts.append("Freed \(ByteFormat.string(report.freedBytes))")
+        }
         if report.stoppedProcesses > 0 {
-            parts.append("stopped \(report.stoppedProcesses)")
+            parts.append("Stopped \(report.stoppedProcesses) process\(report.stoppedProcesses == 1 ? "" : "es")")
+        }
+        if parts.isEmpty {
+            parts.append("Nothing needed cleaning")
         }
         if !report.errors.isEmpty {
             parts.append("\(report.errors.count) warning\(report.errors.count == 1 ? "" : "s")")
