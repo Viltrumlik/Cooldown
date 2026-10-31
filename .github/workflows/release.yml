@@ -26,8 +26,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          flags=()
-          [[ "$GITHUB_REF_NAME" == *-* ]] && flags+=(--prerelease)   # v1.0.0-rc1
-          gh release create "$GITHUB_REF_NAME" build/Cooldown-*.zip \
-            --title "Cooldown $GITHUB_REF_NAME" \
-            --generate-notes "${flags[@]}"
+          # The release may already exist if it was created on github.com
+          # (Releases → Draft a new release); then just attach the zip.
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" build/Cooldown-*.zip --clobber
+          else
+            flags=()
+            [[ "$GITHUB_REF_NAME" == *-* ]] && flags+=(--prerelease)   # v1.0.0-rc1
+            gh release create "$GITHUB_REF_NAME" build/Cooldown-*.zip \
+              --title "Cooldown $GITHUB_REF_NAME" \
+              --generate-notes "${flags[@]}"
+          fi
