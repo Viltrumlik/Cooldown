@@ -15,6 +15,12 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT"></a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/Viltrumlik/Cooldown/releases/latest"><b>⬇️ Download the latest release</b></a>
+</p>
+
+**Cooldown is a free, open-source Mac cleaner for developers.** It frees the space taken by Xcode DerivedData, iOS Simulators, Gradle, npm, Yarn, pip, CocoaPods and Homebrew caches. It stops simulators and build daemons you forgot about, and it tells you when your MacBook is being throttled by heat.
+
 ---
 
 ## Why

@@ -1,0 +1,44 @@
+name: Bug report
+description: Something didn't work, or Cooldown cleaned the wrong thing.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open Cooldown
+        2. Tick "Xcode DerivedData"
+        3. Click Clean
+    validations:
+      required: false
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      placeholder: "15.8.2"
+    validations:
+      required: true
+  - type: dropdown
+    id: chip
+    attributes:
+      label: Mac
+      options:
+        - Apple Silicon (M1/M2/M3/M4…)
+        - Intel
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Cooldown version
+      placeholder: "0.1.0"
+    validations:
+      required: true

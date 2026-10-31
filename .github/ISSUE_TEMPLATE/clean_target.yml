@@ -1,0 +1,35 @@
+name: Suggest something to clean
+description: A cache, build folder or background process Cooldown should know about.
+labels: [enhancement, good first issue]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Most new targets are one entry in `Sources/CooldownCore/Targets/Catalog.swift`. See [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md) if you'd like to add it yourself.
+  - type: input
+    id: tool
+    attributes:
+      label: Tool
+      placeholder: "Deno, Docker, Android Emulator, JetBrains IDEs…"
+    validations:
+      required: true
+  - type: input
+    id: path
+    attributes:
+      label: Folder or process
+      description: Path relative to your home folder, or the process name.
+      placeholder: "~/Library/Caches/deno"
+    validations:
+      required: true
+  - type: textarea
+    id: after
+    attributes:
+      label: What happens after it is deleted?
+      description: Is it rebuilt automatically, downloaded again, or lost for good?
+    validations:
+      required: true
+  - type: input
+    id: size
+    attributes:
+      label: Typical size on your Mac (optional)
+      placeholder: "4.2 GB"
